@@ -17,4 +17,6 @@ error_stack = ErrorStack({
     f'{_module_name}-STR':        dict(type=IOTypeMetaError,            info='Not string data'),
     f'{_module_name}-STR-IRR':    dict(type=IOTypeConditionFormatError, info='Irregular conditional format'),
     f'{_module_name}-STR-NM':     dict(type=IOTypeConditionMatchError,  info='Regular expression not match'),
+    f'{_module_name}-NUMARR':     dict(type=IOTypeMetaError,            info='Not float array'),
+    f'{_module_name}-NUMARR-IRR': dict(type=IOTypeConditionFormatError, info='Float array not support condition'),
 })

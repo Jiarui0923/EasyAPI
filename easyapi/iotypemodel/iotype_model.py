@@ -4,12 +4,14 @@ import os
 
 from .meta_model import IOMetaTypeString
 from .meta_model import IOMetaTypeNumber
+from .meta_model import IOMetaTypeNumberArray
 
 class IOType(object):
     
     _accept_meta_types = {
-        'string': IOMetaTypeString,
-        'number': IOMetaTypeNumber,
+        'string':   IOMetaTypeString,
+        'number':   IOMetaTypeNumber,
+        'numarray': IOMetaTypeNumberArray,
     }
     
     def __init__(self, meta='string', id='', name='', doc='', condition=None, version=''):
@@ -19,6 +21,8 @@ class IOType(object):
         self.doc       = doc
         self.condition = condition
         self.version   = version
+        
+    def __repr__(self): return f'<{self.name}({self.meta}) {self.id}:{self.version}>'
         
     @property
     def schema(self): return {
