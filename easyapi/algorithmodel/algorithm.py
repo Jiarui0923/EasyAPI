@@ -1,4 +1,3 @@
-from ..settings import iolib
 import warnings
 from importlib.util import spec_from_file_location, module_from_spec
 from uuid import uuid4
@@ -9,7 +8,8 @@ class Algorithm(object):
     
     def __init__(self, func, id='', in_params={}, out_params={},
                  name='Meta-Algorithm', description='Meta-Algorithm',
-                 version='0.0.0', references=[], required_resources={}):
+                 version='0.0.0', references=[], required_resources={}, iolib=None):
+        self.iolib = iolib
         self.id = id
         self.name = name
         self.description = description
@@ -37,19 +37,19 @@ class Algorithm(object):
             return True, _output_params
         except Exception as e: return False, str(e)
         
-    def register_params(self, params={}, iolib=iolib):
+    def register_params(self, params={}):
         _params = {}
         for param_name, param in params.items():
             type_id = param.get('id')
-            if type_id not in iolib: iolib[type_id] = param
+            if type_id not in self.iolib: self.iolib[type_id] = param
             else: warnings.warn(f'{type_id} exists, used the previous record.')
-            _params[param_name] = iolib[type_id]
+            _params[param_name] = self.iolib[type_id]
         return _params
     
     @staticmethod
-    def load(path):
+    def load(path, iolib=None):
         _data = Algorithm._load_module_single_file(path)
-        return Algorithm(**_data)
+        return Algorithm(**_data, iolib=iolib)
     
     @staticmethod
     def _load_module_single_file(path):
