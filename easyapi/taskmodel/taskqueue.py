@@ -10,6 +10,12 @@ class TaskQueue(object):
         
     def __len__(self): return len(self.queue)
     
+    def queue_where(self, task):
+        pos = 0
+        for task_ in self.queue:
+            if task_.task_id != task.task_id: pos += 1
+            else: return pos
+    
     def __getitem__(self, task_id):
         for task in self.queue:
             if task.task_id == task_id: return task
