@@ -36,6 +36,7 @@ class Task(object):
         if not succ: self.error = output
         else: self.output_data = output
         self._execute_end()
+        return output
         
         
         

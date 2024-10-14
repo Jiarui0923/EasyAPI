@@ -9,18 +9,36 @@ class TaskQueue(object):
         self.algorithmlib = algorithmlib
         
     def __len__(self): return len(self.queue)
+    
     def __getitem__(self, task_id):
         for task in self.queue:
             if task.task_id == task_id: return task
+        for task in self.done_queue:
+            if task.task_id == task_id: return task
         return None
+    def __delitem__(self, task_id):
+        for i in range(len(self.done_queue)):
+            if task_id == self.done_queue[i].task_id:
+                del self.done_queue[i]
+                return
+        for i in range(len(self.queue)):
+            if task_id == self.queue[i].task_id:
+                if self.queue[i].in_progress: raise RuntimeError('Task is running')
+                del self.queue[i]
+                return
+        raise LookupError('Task not found')
     
     
-    def enqueue(self, access_id='', algorithm_id='', input_data={}, required_resources={}):
-        task = Task(access_id=access_id, algorithm_id=algorithm_id,
-                    input_data=input_data, required_resources=required_resources)
+    @property
+    def header(self): return self.queue[0]
+    
+    def enqueue(self, task):
         self.queue.append(task)
         
     def dequeue(self):
         task = self.queue[0]
         del self.queue[0]
         return task
+    
+    def execute(self, task):
+        return task.execute(algorithmlib=self.algorithmlib, resources=self.resources)

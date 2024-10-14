@@ -13,6 +13,6 @@ out_params={
 }
 
 def main(a, b, resources={}):
-    cpu_num = resources.get('cpu', default=1)
-    cuda_num = resources.get('cuda', default=0)
+    cpu_num = resources.get('cpu')
+    cuda_num = resources.get('cuda')
     return dict(sum=a+b)
