@@ -13,13 +13,20 @@ This approach provides a scalable and user-friendly platform for algorithm deplo
 If there is any issue, please put up with an issue or contact Jiarui Li (jli78@tulane.edu)
 
 ## TO-DO
-- [ ] Basic Framework
-  - [ ] Authentication Module
-  - [ ] I/O Control Module
-  - [ ] Algorithm Unit
-- [ ] Data Type Standard
-  - [ ] Data Type Check
-  - [ ] Data Type Define
+- [x] Basic Framework
+  - [x] Authentication Module
+  - [x] I/O Control Module
+  - [x] Algorithm Unit
+- [x] Data Type Standard
+  - [x] Data Type Check
+  - [x] Data Type Define
+- [ ] Advanced Schedule Queue
+- [ ] Advanced Authority
+  - [ ] Remote API Key
+  - [ ] Recourse Control
+- [ ] Documentation
+  - [ ] Auto RESTful Documentation
+  - [ ] Basic Documentation
 - [ ] Example Service
   - [ ] SASA
   - [ ] COREX
