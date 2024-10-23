@@ -36,15 +36,6 @@ class IOMetaTypeNumberArray(IOMetaTypeModel):
     def _check(self, meta_data, condition=None):
         if condition is None: return meta_data
         else: error_stack['IO-META-NUMARR-IRR']
-            # if isinstance(condition, dict):
-            #     _min = condition.get('min')
-            #     _max = condition.get('max')
-            #     if _min is not None and _max is not None and _min >= _max:
-            #         error_stack['IO-META-NUM-MINMAX']
-            #     if _min is not None and meta_data < float(_min): error_stack['IO-META-NUM-MIN']
-            #     if _max is not None and meta_data > float(_max): error_stack['IO-META-NUM-MAX']
-            #     return meta_data
-            # else: error_stack['IO-META-NUMARR-IRR']
                 
 class IOMetaTypeString(IOMetaTypeModel):
     _meta = 'string'
