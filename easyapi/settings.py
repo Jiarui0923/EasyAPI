@@ -6,7 +6,8 @@ from .taskmodel.taskqueue import TaskQueue
 authenticator = JSONAuthenticator('credentials.json')
 iolib = IOTypeStack(path='iolib.json')
 algorithmlib = AlgorithmStack(
-    r'C:\Users\11056\Desktop\Research\easyapi\algorithms\add_number.py',
+    'algorithms/proteins/select_chain/entry.py',
+    'algorithms/proteins/sasa/entry.py',
     iolib=iolib
 )
 taskqueue = TaskQueue(resources={'cpu':4, 'cuda':0}, algorithmlib=algorithmlib)

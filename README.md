@@ -32,3 +32,8 @@ If there is any issue, please put up with an issue or contact Jiarui Li (jli78@t
   - [ ] COREX
   - [ ] Sequence Entropy
 - [ ] New Communication Protocol
+
+## Start Server
+```python
+fastapi run easyapi
+```
