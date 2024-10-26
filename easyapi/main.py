@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Depends
-from .settings import authenticator
+from .settings import authenticator, server_name
 from .routers import iotype
 from .routers import entries
 from .routers import tasks
@@ -13,5 +13,5 @@ app.include_router(tasks.route)
 @app.get("/")
 async def root(auth_id : str = Depends(authenticator.url_auth)):
     
-    return {'main': 'Hello EasyAPI',
+    return {'server': server_name,
             'id': auth_id}
