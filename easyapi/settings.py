@@ -11,3 +11,4 @@ algorithmlib = AlgorithmStack(
     iolib=iolib
 )
 taskqueue = TaskQueue(resources={'cpu':4, 'cuda':0}, algorithmlib=algorithmlib)
+server_name = 'Local Test Server'

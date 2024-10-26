@@ -28,7 +28,7 @@ If there is any issue, please put up with an issue or contact Jiarui Li (jli78@t
   - [ ] Auto RESTful Documentation
   - [ ] Basic Documentation
 - [ ] Example Service
-  - [ ] SASA
+  - [x] SASA
   - [ ] COREX
   - [ ] Sequence Entropy
 - [ ] New Communication Protocol
@@ -37,3 +37,6 @@ If there is any issue, please put up with an issue or contact Jiarui Li (jli78@t
 ```python
 fastapi run easyapi
 ```
+
+## Access The Services
+Please use `easy_client` with authentications to access the APIs.
