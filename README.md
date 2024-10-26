@@ -29,7 +29,7 @@ If there is any issue, please put up with an issue or contact Jiarui Li (jli78@t
   - [ ] Basic Documentation
 - [ ] Example Service
   - [x] SASA
-  - [ ] COREX
+  - [x] COREX
   - [ ] Sequence Entropy
 - [ ] New Communication Protocol
 
