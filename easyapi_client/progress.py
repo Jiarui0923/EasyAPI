@@ -9,6 +9,7 @@ class LoadProgress(object):
         self._this_marker = 0
         self._time_start = time.perf_counter()
         self._timer = timer
+        self._last_write_len = 0
         self.show()
     def update(self, desc=None, marker=None):
         self._desc = self._desc if desc is None else desc
@@ -22,10 +23,13 @@ class LoadProgress(object):
         _marker = self._markers[self._this_marker] if marker is None else marker
         if self._timer:
             _time_used = self._build_time(time.perf_counter()-self._time_start)
-            sys.stdout.write(f'\r[{_time_used}] {_marker} {self._desc}')
+            _write_str = f'[{_time_used}] {_marker} {self._desc}'
         else:
-            sys.stdout.write(f'\r{_marker} {self._desc}')
+            _write_str = f'{_marker} {self._desc}'
+        sys.stdout.write('\r'+''.join([' ']*self._last_write_len))
+        sys.stdout.write('\r'+_write_str)
         sys.stdout.flush()
+        self._last_write_len = len(_write_str)
     def done(self, desc=None):
         self.update(desc=desc, marker='✓')
     def error(self, desc=None):
