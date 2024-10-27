@@ -69,7 +69,7 @@ class RemoteAlgorithm(object):
         _task_progress_bar = LoadProgress('Task Submitted', timer=True)
         time.sleep(0.1)
         _response = self._client._get_task_return(_task_id)
-        if 'success' not in _response:
+        while 'success' not in _response:
             _task_progress_bar.update(_response.get('status'))
             time.sleep(0.1)
             _response = self._client._get_task_return(_task_id)

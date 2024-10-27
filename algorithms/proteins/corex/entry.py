@@ -44,6 +44,7 @@ in_params={
     'sampler': _types['corex-sampler'],
     'threshold': _types['float>0'],
     'sconf_weight': _types['float>0'],
+    'base_fraction': _types['float>0'],
     'probe_radius': _types['float>1'],
     'n_points': _types['float>1'],
 }
@@ -59,6 +60,6 @@ def main(pdb, window_size, min_size, samples,
     corex_values = corex(pdb, window_size=int(window_size), min_size=int(min_size),
                          samples=int(samples), sampler=sampler, threshold=threshold,
                          sconf_weight=sconf_weight, base_fraction=base_fraction,
-                         probe_radius=probe_radius, point_number=n_points,
+                         probe_radius=probe_radius, point_number=int(n_points),
                          worker_num=-1, gpu_num=-1)
     return dict(corex=corex_values)

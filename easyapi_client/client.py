@@ -43,53 +43,52 @@ class EasyAPIClient(object):
             response = requests.post(_full_url, data=json.dumps(data), headers=headers)
         else: raise RuntimeError('Method Not Allowed')
         if response.status_code != 200: raise ConnectionError(f'{response.content.decode()}')
-    
         return json.loads(response.content)
     
     def _get_server_info(self):
-        data = self._request(entry='/',
+        data = self._request(entry='./',
                              method='GET')
         return data
     
     def _get_entries(self):
-        data = self._request(entry='entries/',
+        data = self._request(entry='./entries/',
                              method='GET',
                              data={'skip':0, 'limit':-1})
         return data.get('records')
     
     def _get_entry(self, entry_name):
-        data = self._request(entry=f'entries/{entry_name}',
+        data = self._request(entry=f'./entries/{entry_name}',
                              method='GET')
         return data
     
     def _get_entry_input(self, entry_name):
-        data = self._request(entry=f'entries/{entry_name}/in',
+        data = self._request(entry=f'./entries/{entry_name}/in',
                              method='GET')
         return data
     
     def _get_entry_output(self, entry_name):
-        data = self._request(entry=f'entries/{entry_name}/out',
+        data = self._request(entry=f'./entries/{entry_name}/out',
                              method='GET')
         return data
     
     def _get_ios(self):
-        data = self._request(entry='io/',
+        data = self._request(entry='./io/',
                              method='GET',
                              data={'skip':0, 'limit':-1})
         return data.get('records')
     
     def _get_io(self, ioname):
-        data = self._request(entry=f'io/{ioname}',
+        data = self._request(entry=f'./io/{ioname}',
                              method='GET')
         return data
     
     def _submit_task(self, entry_name, params):
-        data = self._request(entry=f'entries/{entry_name}',
+        data = self._request(entry=f'./entries/{entry_name}',
                              method='POST',
                              data=params)
         return data.get('task_id')
 
     def _get_task_return(self, task_id):
-        data = self._request(entry=f'tasks/{task_id}',
+        data = self._request(entry=f'./tasks/{task_id}',
                              method='GET')
         return data

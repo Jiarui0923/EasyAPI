@@ -35,38 +35,39 @@ def corex(pdb:str,
           base_fraction:float=1.0,
           probe_radius:float=1.4,
           point_number:float=1000,
-          worker_num:int=1,
-          gpu_num:int=1):
+          worker_num:int=-1,
+          gpu_num:int=-1):
      
      if worker_num <= 0: worker_num=os.cpu_count()-1
-     if gpu_num <= 0: device='cpu'
+     if gpu_num == 0: device='cpu'
      else:
-          if gpu_num == -1: device = 'cuda'
+          if gpu_num < 0: device = 'cuda'
           else: device = [f'cuda:{i}' for i in range(0, gpu_num)]
-     if sampler == 'exhaustive':
-          sampler = corex_sampler.exhaustive
-          sampler_args = {}
-     elif sampler == 'montecarlo':
-          sampler = corex_sampler.montecarlo
-          sampler_args = {'probability': threshold}
-     elif sampler == 'adaptive':
-          sampler = corex_sampler.adaptive_montecarlo
-          sampler_args = {'probability': threshold, 'adaptive_rate':0.05}
-     else: raise ModuleNotFoundError(f'Sampler {sampler} Not Found.')
-     
-     with tempfile.NamedTemporaryFile('w', delete=True) as _pdb_file:
+
+     with tempfile.NamedTemporaryFile('w', delete=True, suffix='.pdb') as _pdb_file:
           _pdb_file.write(pdb)
           _pdb_path = _pdb_file.name
           reset_id(_pdb_path)
+          _protein = Peptide(path=_pdb_path, window_size=window_size, min_size=min_size)
+          if sampler == 'exhaustive':
+               if len(_protein.residues) > 200: raise ValueError('Protein is too large to run exhaustive sampling.')
+               sampler = corex_sampler.exhaustive
+               sampler_args = {}
+          elif sampler == 'montecarlo':
+               sampler = corex_sampler.montecarlo
+               sampler_args = {'probability': threshold}
+          elif sampler == 'adaptive':
+               sampler = corex_sampler.adaptive_montecarlo
+               sampler_args = {'probability': threshold, 'adaptive_rate':0.05}
+          else: raise ModuleNotFoundError(f'Sampler {sampler} Not Found.')
           
-          batch_size = 1024
+          batch_size = 2048
           while batch_size >= 1:
                try:
                     _corex = COREX(workers=worker_num, batch_size=batch_size, samples=samples,
                                    device=device, dtype=torch.float64, sampler=sampler, sampler_args=sampler_args,
                                    base_fraction=base_fraction, silence=True, probe_radius=probe_radius,
                                    point_number=point_number, sconf_weight=sconf_weight)
-                    _protein = Peptide(path=_pdb_path, window_size=window_size, min_size=min_size)
                     return _corex(_protein)
                     break
                except torch.OutOfMemoryError: batch_size = int(batch_size / 2)
