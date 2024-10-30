@@ -10,6 +10,7 @@ class AlgorithmStack(object):
         else: self.paths = paths
         self.iolib = iolib
         _algorithms = [self._load_algorithm(path) for path in self.paths]
+        _algorithms = [_algorithm for _algorithm in _algorithms if _algorithm is not None]
         self.algorithms = {_algorithm.id:_algorithm for _algorithm in _algorithms}
         
     def __len__(self): return len(self.algorithms)

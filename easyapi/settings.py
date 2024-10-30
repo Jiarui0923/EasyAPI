@@ -9,6 +9,8 @@ algorithmlib = AlgorithmStack(
     'algorithms/proteins/select_chain/entry.py',
     'algorithms/proteins/sasa/entry.py',
     'algorithms/proteins/corex/entry.py',
+    'algorithms/proteins/list_chain/entry.py',
+    'algorithms/proteins/bfactor/entry.py',
     iolib=iolib
 )
 taskqueue = TaskQueue(resources={'cpu':4, 'cuda':0}, algorithmlib=algorithmlib)
