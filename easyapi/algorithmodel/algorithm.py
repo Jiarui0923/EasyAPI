@@ -4,6 +4,8 @@ from uuid import uuid4
 import os
 import sys
 
+from .parameter import Parameter
+
 class Algorithm(object):
     
     def __init__(self, func, id='', in_params={}, out_params={},
@@ -25,8 +27,10 @@ class Algorithm(object):
     def _decode_params(self, schema, params):
         _decoded_params = {}
         for io_name, io_type in schema.items():
-            if io_name not in params: raise RuntimeError(f'{io_name} not found')
-            else: _decoded_params[io_name] = io_type(params[io_name])
+            if io_name not in params:
+                if io_type.optional: _decoded_params[io_name] = io_type.default_value
+                else: raise RuntimeError(f'{io_name} not found')
+            else: _decoded_params[io_name] = io_type.io_type(params[io_name])
         return _decoded_params
         
     def __call__(self, params, resources={}):
@@ -40,10 +44,11 @@ class Algorithm(object):
     def register_params(self, params={}):
         _params = {}
         for param_name, param in params.items():
-            type_id = param.get('id')
-            if type_id not in self.iolib: self.iolib[type_id] = param
-            else: warnings.warn(f'{type_id} exists, used the previous record.')
-            _params[param_name] = self.iolib[type_id]
+            # type_id = param.get('id')
+            # if type_id not in self.iolib: self.iolib[type_id] = param
+            # else: warnings.warn(f'{type_id} exists, used the previous record.')
+            # _params[param_name] = self.iolib[type_id]
+            _params[param_name] = Parameter(name=param_name, **param, iolib=self.iolib)
         return _params
     
     @staticmethod

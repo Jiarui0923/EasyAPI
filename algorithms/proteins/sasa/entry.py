@@ -31,14 +31,26 @@ _types = {
                  version='0.0.1')
 }
 in_params={
-    'pdb':   _types['pdb'],
-    'algorithm': _types['algorithm'],
-    'probe_radius': _types['float>1'],
-    'n_points': _types['float>1'],
-    'n_slices': _types['float>1'],
+    'pdb':          dict(io_type=_types['pdb'],
+                         default_value=None,
+                         desc='The input PDB file.'),
+    'algorithm':    dict(io_type=_types['algorithm'],
+                         default_value='ShrakeRupley',
+                         desc='The SASA algorithms.'),
+    'probe_radius': dict(io_type=_types['float>1'],
+                         default_value=1.4,
+                         desc='The probe radius in A.'),
+    'n_points':     dict(io_type=_types['float>1'],
+                         default_value=1000,
+                         desc='The number of test points in Shrake & Rupley algorithm.'),
+    'n_slices':     dict(io_type=_types['float>1'],
+                         default_value=20,
+                         desc='Get the number of slices per atom in Lee & Richards algorithm.'),
 }
 out_params={
-    'sasa':  _types['sasa'],
+    'sasa':  dict(io_type=_types['sasa'],
+                  default_value=None,
+                  desc='The solvent accessible surface area. The order is the same order as the PDB.'),
 }
 
 from sasa import sasa

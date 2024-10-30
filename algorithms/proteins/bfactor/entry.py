@@ -25,11 +25,17 @@ _types = {
                   version='0.0.1')
 }
 in_params={
-    'pdb':   _types['pdb'],
-    'record': _types['record']
+    'pdb':    dict(io_type=_types['pdb'],
+                   default_value=None,
+                   desc='The input PDB file.'),
+    'record': dict(io_type=_types['record'],
+                   default_value='ATOM',
+                   desc='The PDB record for B-Factor extraction.'),
 }
 out_params={
-    'bfactor': _types['bfactor'],
+    'bfactor': dict(io_type=_types['pdb'],
+                    default_value=None,
+                    desc='The B-Factor. The order is the same order as the PDB.'),
 }
 
 from bfactor import get_bfactor

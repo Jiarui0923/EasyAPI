@@ -19,11 +19,11 @@ _types = {
                   version='0.0.1'),
 }
 in_params={
-    'pdb':   _types['pdb'],
-    'chain': _types['chain'],
+    'pdb':   dict(io_type=_types['pdb'], default_value=None, desc='The input PDB file.'),
+    'chain': dict(io_type=_types['chain'], default_value='A', desc='The selected protein chains ID.'),
 }
 out_params={
-    'pdb':   _types['pdb'],
+    'pdb':   dict(io_type=_types['pdb'], default_value=None, desc='The output PDB file that only contains selected chains.'),
 }
 
 from select_chain import select_chain

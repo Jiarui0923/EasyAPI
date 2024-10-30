@@ -82,12 +82,16 @@ async def get_entry_version(entry_name, auth_id : str = Depends(authenticator.ur
 async def get_entry_in_schema(entry_name, auth_id : str = Depends(authenticator.url_auth)):
     _entry = _get_entry(entry_name)
     _check_entry_auth(entry_name, auth_id)
-    response = {name:param.id for name, param in _entry.in_params.items()}
+    response = {name:param.property
+                for name, param
+                in _entry.in_params.items()}
     return response
     
 @route.get('/{entry_name}/out')
 async def get_entry_out_schema(entry_name, auth_id : str = Depends(authenticator.url_auth)):
     _entry = _get_entry(entry_name)
     _check_entry_auth(entry_name, auth_id)
-    response = {name:param.id for name, param in _entry.out_params.items()}
+    response = {name:param.property
+                for name, param
+                in _entry.out_params.items()}
     return response

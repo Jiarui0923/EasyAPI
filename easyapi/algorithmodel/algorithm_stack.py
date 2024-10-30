@@ -18,9 +18,9 @@ class AlgorithmStack(object):
     def __getitem__(self, name): return self.algorithms[name]
     
     def _load_algorithm(self, path):
-        try: return Algorithm.load(path, iolib=self.iolib)
-        except: warnings.warn(f'Load module {path} failed')
-        # return Algorithm.load(path, iolib=self.iolib)
+        # try: return Algorithm.load(path, iolib=self.iolib)
+        # except: warnings.warn(f'Load module {path} failed')
+        return Algorithm.load(path, iolib=self.iolib)
     
     @property
     def entries(self): return list(self.algorithms.keys())

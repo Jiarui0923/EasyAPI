@@ -19,10 +19,10 @@ _types = {
                   version='0.0.1'),
 }
 in_params={
-    'pdb':   _types['pdb'],
+    'pdb':   dict(io_type=_types['pdb'], default_value=None, desc='The input PDB file.'),
 }
 out_params={
-    'chain': _types['chain'],
+    'chain': dict(io_type=_types['chain'], default_value=None, desc='The chains contained in the PDB files.'),
 }
 
 from list_chain import list_chain
