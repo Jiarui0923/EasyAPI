@@ -17,6 +17,8 @@ If there is any issue, please put up with an issue or contact Jiarui Li (jli78@t
   - [x] Authentication Module
   - [x] I/O Control Module
   - [x] Algorithm Unit
+  - [x] Auto Algorithm Inference
+  - [x] Batch Load
 - [x] Data Type Standard
   - [x] Data Type Check
   - [x] Data Type Define
@@ -28,15 +30,15 @@ If there is any issue, please put up with an issue or contact Jiarui Li (jli78@t
 - [ ] Documentation
   - [ ] Auto RESTful Documentation
   - [x] Basic Documentation
-- [ ] Example Service
+- [x] Example Service
   - [x] SASA
   - [x] COREX
   - [x] BFactor
   - [x] Chain List & Selection
   - [x] PDB Fetch
-  - [ ] Sequence Entropy
-  - [ ] APL
-  - [ ] MHC-II
+  - [x] Sequence Entropy
+  - [x] APL
+  - [x] MHC-II
 - [ ] New Communication Protocol
 - [x] Remote Client
 

@@ -3,6 +3,8 @@ from .iotypemodel.iotype_model import IOTypeStack
 from .algorithmodel.algorithm_stack import AlgorithmStack
 from .taskmodel.taskqueue import TaskQueue
 
+from algorithms.add_number import add_two_number
+
 authenticator = JSONAuthenticator('credentials.json')
 iolib = IOTypeStack(path='iolib.json')
 algorithmlib = AlgorithmStack(
@@ -16,5 +18,6 @@ algorithmlib = AlgorithmStack(
     'algorithms/proteins/get_seq/entry.py',
     iolib=iolib
 )
+
 taskqueue = TaskQueue(resources={'cpu':4, 'cuda':0}, algorithmlib=algorithmlib)
 server_name = 'Local Test Server'
