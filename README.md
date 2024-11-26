@@ -20,18 +20,25 @@ If there is any issue, please put up with an issue or contact Jiarui Li (jli78@t
 - [x] Data Type Standard
   - [x] Data Type Check
   - [x] Data Type Define
+  - [x] Parameter Support
 - [ ] Advanced Schedule Queue
 - [ ] Advanced Authority
   - [ ] Remote API Key
   - [ ] Recourse Control
 - [ ] Documentation
   - [ ] Auto RESTful Documentation
-  - [ ] Basic Documentation
+  - [x] Basic Documentation
 - [ ] Example Service
   - [x] SASA
   - [x] COREX
+  - [x] BFactor
+  - [x] Chain List & Selection
+  - [x] PDB Fetch
   - [ ] Sequence Entropy
+  - [ ] APL
+  - [ ] MHC-II
 - [ ] New Communication Protocol
+- [x] Remote Client
 
 ## Start Server
 ```python

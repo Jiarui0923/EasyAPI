@@ -3,6 +3,8 @@ from importlib.util import spec_from_file_location, module_from_spec
 from uuid import uuid4
 import os
 import sys
+import logging
+import time
 
 from .parameter import Parameter
 
@@ -54,14 +56,23 @@ class Algorithm(object):
     @staticmethod
     def load(path, iolib=None):
         _data = Algorithm._load_module_single_file(path)
+        if _data is None: return None
         return Algorithm(**_data, iolib=iolib)
     
     @staticmethod
     def _load_module_single_file(path):
-        spec = spec_from_file_location(name=str(uuid4()), location=path)
-        sys.path.append(os.path.abspath(os.path.dirname(path)))
-        module = module_from_spec(spec)
-        spec.loader.exec_module(module)
+        _load_begin = time.perf_counter()
+        try:
+            spec = spec_from_file_location(name=str(uuid4()), location=path)
+            sys.path.append(os.path.abspath(os.path.dirname(path)))
+            module = module_from_spec(spec)
+            spec.loader.exec_module(module)
+        except:
+            logger = logging.getLogger('uvicorn.warning')
+            logger.warning(f'Load {path} failed.')
+            return None
+        logger = logging.getLogger('uvicorn.info')
+        logger.info(f'<ALGORITHM> ({module.id}) {module.name} Loaded [in {time.perf_counter()-_load_begin:.4f}s] from {path}.')
         return {
             'id': module.id,
             'name': module.name,

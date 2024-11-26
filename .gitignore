@@ -4,3 +4,6 @@ credentials.json
 iolib.json
 example.pdb
 *.zip
+*.fasta
+tutorial.ipynb
+tutorial_schedule.ipynb

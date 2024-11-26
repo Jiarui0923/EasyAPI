@@ -49,6 +49,8 @@ def corex(pdb:str,
           _pdb_path = _pdb_file.name
           reset_id(_pdb_path)
           _protein = Peptide(path=_pdb_path, window_size=window_size, min_size=min_size)
+          if len(_protein.residues) / window_size < np.log2(samples):
+               sampler = 'exhaustive'
           if sampler == 'exhaustive':
                if len(_protein.residues) > 200: raise ValueError('Protein is too large to run exhaustive sampling.')
                sampler = corex_sampler.exhaustive
@@ -61,7 +63,13 @@ def corex(pdb:str,
                sampler_args = {'probability': threshold, 'adaptive_rate':0.05}
           else: raise ModuleNotFoundError(f'Sampler {sampler} Not Found.')
           
-          batch_size = 2048
+          batch_size = 1024
+          if len(_protein.residues) < 100: batch_size = 1024
+          elif len(_protein.residues) < 200: batch_size = 512
+          elif len(_protein.residues) < 400: batch_size = 256
+          elif len(_protein.residues) < 600: batch_size = 128
+          else: batch_size = 64
+          
           while batch_size >= 1:
                try:
                     _corex = COREX(workers=worker_num, batch_size=batch_size, samples=samples,

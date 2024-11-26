@@ -59,8 +59,9 @@ class IOTypeStack(object):
     def __contains__(self, io_id): return io_id in self.iotypes
     def _load_dict(self, dict_): 
         for io_id, io_data in dict_.items(): self[io_id] = io_data
-    def get_records(self, skip=0, limit=10):
-        _keys = list(self.iotypes.keys())
+    def get_records(self, skip=0, limit=10, full=False):
+        if full: _keys = list(self.iotypes.items())
+        else: _keys = list(self.iotypes.keys())
         if limit <= 0: return _keys[skip:]
         else: return _keys[skip:skip+limit]
     

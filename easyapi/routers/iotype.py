@@ -6,11 +6,12 @@ from ..settings import iolib
 route = APIRouter(prefix='/io')
 
 @route.get('/')
-async def get_type_list(skip: int = 0, limit: int = 10,
+async def get_type_list(skip: int = 0, limit: int = 10, full: bool = False,
                         auth_id : str = Depends(authenticator.url_auth)):
     if skip <= 0: skip=0
     if skip > len(iolib): raise HTTPException(status_code=400, detail=f'skip({skip}) is larger than total number ({len(iolib)})')
-    _keys = iolib.get_records(skip=skip, limit=limit)
+    if full: _keys = dict(iolib.get_records(skip=skip, limit=limit, full=True))
+    else: _keys = iolib.get_records(skip=skip, limit=limit)
     return {'total': len(iolib), 'skip': skip, 'limit':limit, 'records':_keys}
 
 @route.get('/{io_id}')

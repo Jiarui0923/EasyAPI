@@ -9,10 +9,11 @@ route = APIRouter(prefix='/entries')
 
 
 @route.get('/')
-async def get_entry_list(skip: int = 0, limit: int = 10,
+async def get_entry_list(skip: int = 0, limit: int = 10, name: bool = False,
                    auth_id : str = Depends(authenticator.url_auth)):
     _entries = algorithmlib.entries
     _entries = authenticator.access_check(auth_id, _entries)
+    if name: _entries = [(_entry, _get_entry(_entry).name) for _entry in _entries]
     if skip <= 0: skip=0
     if skip > len(_entries): raise HTTPException(status_code=400, detail=f'skip({skip}) is larger than total number ({len(_entries)})')
     if limit <= 0:  return {'total': len(_entries), 'skip': skip, 'limit': None, 'records':_entries[skip:]}
@@ -42,7 +43,7 @@ async def submit_task(entry_name, request: Request, background_tasks: Background
     
 
 @route.get('/{entry_name}')
-async def get_entry_doc(entry_name, auth_id : str = Depends(authenticator.url_auth)):
+async def get_entry_doc(entry_name, io:bool = False, auth_id : str = Depends(authenticator.url_auth)):
     _entry = _get_entry(entry_name)
     _check_entry_auth(entry_name, auth_id)
     response = {
@@ -52,6 +53,9 @@ async def get_entry_doc(entry_name, auth_id : str = Depends(authenticator.url_au
         'version': _entry.version,
         'references': _entry.references,
     }
+    if io:
+        response['inputs'] = {name:param.property for name, param in _entry.in_params.items()}
+        response['outputs'] = {name:param.property for name, param in _entry.out_params.items()}
     return response
 
 @route.get('/{entry_name}/name')

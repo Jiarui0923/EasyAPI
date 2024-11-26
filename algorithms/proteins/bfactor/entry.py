@@ -1,6 +1,6 @@
 id='bfactor'
 name='Get B-Factor'
-description='Extract B-Factor from the given PDB file.'
+description='Extract residue level B-Factor from the given PDB file (The B-Factor of CA atom).'
 version='0.0.1'
 references=[]
 required_resources={'cpu':1, 'cuda':0}
@@ -33,7 +33,7 @@ in_params={
                    desc='The PDB record for B-Factor extraction.'),
 }
 out_params={
-    'bfactor': dict(io_type=_types['pdb'],
+    'bfactor': dict(io_type=_types['bfactor'],
                     default_value=None,
                     desc='The B-Factor. The order is the same order as the PDB.'),
 }
