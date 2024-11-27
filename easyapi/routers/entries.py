@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException, Request, BackgroundTasks
+from fastapi import APIRouter, Depends, HTTPException, Request
 from ..settings import authenticator
 from ..settings import algorithmlib
 from ..settings import taskqueue
@@ -27,7 +27,7 @@ def _check_entry_auth(entry_name, auth_id):
     if len(auth_response) < 0: raise HTTPException(status_code=403)
     
 @route.post('/{entry_name}')
-async def submit_task(entry_name, request: Request, background_tasks: BackgroundTasks,
+async def submit_task(entry_name, request: Request,
                 auth_id : str = Depends(authenticator.url_auth)):
     _entry = _get_entry(entry_name)
     _check_entry_auth(entry_name, auth_id)
@@ -37,7 +37,7 @@ async def submit_task(entry_name, request: Request, background_tasks: Background
     task = Task(access_id=auth_id, algorithm_id=_entry.id,
                 input_data=_task_params,
                 required_resources=_entry.required_resources)
-    background_tasks.add_task(task_holder, taskqueue, task)
+    task_holder(task_queue=taskqueue, task=task)
     return {'task_id': task.task_id, 'create_time': task.create_time}
 
     

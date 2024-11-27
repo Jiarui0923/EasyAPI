@@ -16,6 +16,7 @@ class Task(object):
         self.start_time = None
         self.done_time = None
         self.error = None
+        self._asyncio_task = None
         
     def __repr__(self): return f'<({self.create_time}){self.task_id} is_done:{self.is_done}>'
         
@@ -38,5 +39,7 @@ class Task(object):
         self._execute_end()
         return output
         
+    def cancel(self):
+        if self._asyncio_task is not None: self._asyncio_task.cancel()
         
         

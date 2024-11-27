@@ -24,9 +24,13 @@ If there is any issue, please put up with an issue or contact Jiarui Li (jli78@t
   - [x] Data Type Define
   - [x] Parameter Support
 - [ ] Advanced Schedule Queue
+  - [x] Allow Cancel
+  - [x] Multipe Resource-dependent Queue
+  - [ ] Dynamic Queue Layout
+  - [ ] Celery
 - [ ] Advanced Authority
   - [ ] Remote API Key
-  - [ ] Recourse Control
+  - [ ] Resourse Control
 - [ ] Documentation
   - [ ] Auto RESTful Documentation
   - [x] Basic Documentation
