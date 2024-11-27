@@ -40,6 +40,8 @@ If there is any issue, please put up with an issue or contact Jiarui Li (jli78@t
   - [x] APL
   - [x] MHC-II
 - [ ] New Communication Protocol
+  - [x] WebSocket
+  - [ ] MQTT
 - [x] Remote Client
 
 ## Start Server
