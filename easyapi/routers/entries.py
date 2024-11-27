@@ -44,19 +44,37 @@ async def submit_task(entry_name, request: Request,
 
 @route.get('/{entry_name}')
 async def get_entry_doc(entry_name, io:bool = False, auth_id : str = Depends(authenticator.url_auth)):
-    _entry = _get_entry(entry_name)
-    _check_entry_auth(entry_name, auth_id)
-    response = {
-        'id': _entry.id,
-        'name': _entry.name,
-        'description': _entry.description,
-        'version': _entry.version,
-        'references': _entry.references,
-    }
-    if io:
-        response['inputs'] = {name:param.property for name, param in _entry.in_params.items()}
-        response['outputs'] = {name:param.property for name, param in _entry.out_params.items()}
-    return response
+    if ',' in entry_name or ';' in entry_name:
+        entry_name = str(entry_name).replace(';', ',')
+        _entries = {_entry:_get_entry(_entry) for _entry in entry_name.split(',') if len(_entry) > 0}
+        for _entry_name in entry_name.split(','):
+            if len(_entry_name) > 0:
+                _entry = _get_entry(_entry_name)
+                _entries[_entry_name] = {
+                    'id': _entry.id,
+                    'name': _entry.name,
+                    'description': _entry.description,
+                    'version': _entry.version,
+                    'references': _entry.references,
+                }
+                if io:
+                    _entries[_entry_name]['inputs'] = {name:param.property for name, param in _entry.in_params.items()}
+                    _entries[_entry_name]['outputs'] = {name:param.property for name, param in _entry.out_params.items()}
+        return _entries
+    else:
+        _entry = _get_entry(entry_name)
+        _check_entry_auth(entry_name, auth_id)
+        response = {
+            'id': _entry.id,
+            'name': _entry.name,
+            'description': _entry.description,
+            'version': _entry.version,
+            'references': _entry.references,
+        }
+        if io:
+            response['inputs'] = {name:param.property for name, param in _entry.in_params.items()}
+            response['outputs'] = {name:param.property for name, param in _entry.out_params.items()}
+        return response
 
 @route.get('/{entry_name}/name')
 async def get_entry_name(entry_name, auth_id : str = Depends(authenticator.url_auth)):
