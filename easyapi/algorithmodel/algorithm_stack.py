@@ -29,11 +29,11 @@ class AlgorithmStack(object):
         _load_begin = time.perf_counter()
         try:
             logger = logging.getLogger('uvicorn.info')
-            logger.info(f'<ALGORITHM> ({algo_dict["id"]}) {algo_dict["name"]} Loaded [in {time.perf_counter()-_load_begin:.4f}s].')
+            logger.info(f'Load [{time.perf_counter()-_load_begin:.3f}s] > ({algo_dict["id"]}) {algo_dict["name"]}')
             return Algorithm(**algo_dict, iolib=self.iolib)
         except:
             logger = logging.getLogger('uvicorn.warning')
-            logger.warning(f'Load ({algo_dict["id"]}) {algo_dict["name"]} failed.')
+            logger.warning(f'Load [FAILED] > ({algo_dict["id"]}) {algo_dict["name"]}')
             return None
     
     @property

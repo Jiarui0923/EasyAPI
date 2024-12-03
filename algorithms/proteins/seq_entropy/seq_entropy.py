@@ -2,6 +2,9 @@ import numpy as np
 import tempfile
 import random
 import string
+
+import warnings
+warnings.filterwarnings('ignore')
 from Bio.Align.Applications import ClustalOmegaCommandline
 from Bio import AlignIO
 
