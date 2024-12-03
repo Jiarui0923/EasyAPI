@@ -19,6 +19,7 @@ If there is any issue, please put up with an issue or contact Jiarui Li (jli78@t
   - [x] Algorithm Unit
   - [x] Auto Algorithm Inference
   - [x] Batch Load
+  - [x] Memoization Cache
 - [x] Data Type Standard
   - [x] Data Type Check
   - [x] Data Type Define
@@ -27,7 +28,6 @@ If there is any issue, please put up with an issue or contact Jiarui Li (jli78@t
   - [x] Allow Cancel
   - [x] Multipe Resource-dependent Queue
   - [ ] Dynamic Queue Layout
-  - [ ] Celery
 - [ ] Advanced Authority
   - [ ] Remote API Key
   - [ ] Resourse Control
@@ -43,10 +43,8 @@ If there is any issue, please put up with an issue or contact Jiarui Li (jli78@t
   - [x] Sequence Entropy
   - [x] APL
   - [x] MHC-II
-- [ ] New Communication Protocol
+- [x] Communication Protocol
   - [x] WebSocket
-  - [ ] MQTT
-- [x] Remote Client
 
 ## Start Server
 ```python
