@@ -30,3 +30,14 @@ class Chain(String):
     name      = 'PDB Chain IDs'
     doc       = 'The protein chain ids, seperate with `,`, no blank character.'
     condition = '[A-Za-z0-9]+(,[A-Za-z0-9]+)*'
+    
+class SASA(NumArray):
+    id        = 'sasa'
+    name      = 'SASA Values'
+    doc       = 'SASA Values in Sorted Chain ID Order.'
+    
+class SASAlgorithm(String):
+    id        = 'sasa-algorithm'
+    name      = 'SASA Algorithm'
+    doc       = '(ShrakeRupley|LeeRichards) The SASA Algorithm that could be ShrakeRupley or LeeRichards.'
+    condition = '(ShrakeRupley|LeeRichards)'
