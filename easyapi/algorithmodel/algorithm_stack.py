@@ -1,10 +1,9 @@
 from .algorithm import Algorithm
 from .algorithm_infer import define_algorithm
-import os
-import warnings
+
 import logging
 import time
-
+from functools import wraps
 
 class AlgorithmStack(object):
     _registered_algorithm = []
@@ -51,6 +50,7 @@ class AlgorithmStack(object):
         if _algo is not None: self.algorithms[_algo.id] = _algo
         
 def register(version='0.0.1', references=[], required_resources={'cpu':-1, 'cuda':-1}):
+    
     def wrap(func):
         AlgorithmStack.register(func, version=version, references=references, required_resources=required_resources)
         return func

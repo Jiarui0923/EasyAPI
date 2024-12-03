@@ -1,6 +1,7 @@
-from easyapi import register, Types
+from easyapi import register, cache, Types
 
 @register(required_resources={'cpu':1, 'cuda':0})
+@cache(disable=False)
 def add_two_number(a:Types.Number['The first number'],
                    b:Types.Number['The second number'] = 10,
                    resources={}

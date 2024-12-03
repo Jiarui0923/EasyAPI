@@ -1,9 +1,11 @@
 from .credentials.auth import JSONAuthenticator
 from .iotypemodel.iotype_model import IOTypeStack
 from .algorithmodel.algorithm_stack import AlgorithmStack
+from .algorithmodel.cache import AlgorithmCachePool
+from .algorithmodel.cache import Storage
 from .taskmodel.taskqueue import TaskQueue
 
-from algorithms.add_number import add_two_number
+__import__('algorithms')
 
 authenticator = JSONAuthenticator('credentials.json')
 iolib = IOTypeStack(path='iolib.json')
@@ -23,3 +25,4 @@ taskqueue = TaskQueue(queue_configs=[{'cpu':1, 'cuda':0},
                                      {'cpu':3, 'cuda':0}],
                       algorithmlib=algorithmlib)
 server_name = 'Local Test Server'
+AlgorithmCachePool.engine(Storage.MongoDB(database='easyapi_cache'), hash='MD5')
