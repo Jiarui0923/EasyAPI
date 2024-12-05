@@ -25,7 +25,7 @@ out_params={
     'chain': dict(io_type=_types['chain'], default_value=None, desc='The chains contained in the PDB files.'),
 }
 
-from list_chain import list_chain
+from algorithms.proteins.list_chain._list_chain import list_chain
 def main(pdb, resources={}):
     _chains = list_chain(pdb=pdb)
     return dict(chain=_chains)

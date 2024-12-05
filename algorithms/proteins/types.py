@@ -3,6 +3,7 @@ from easyapi.annotations import NumArray
 from easyapi.annotations import Number
 from easyapi.annotations import NumberGreateThan1
 from easyapi.annotations import PositiveNumber
+from easyapi.annotations import JSONString
 
 class Sequence(String):
     id        = 'protein-seq'
@@ -25,6 +26,18 @@ class PDB(String):
     name      = 'PDB File'
     doc       = 'The protein PDB file.'
     
+class PDBID(String):
+    id        = 'pdbid'
+    name      = 'PDB ID'
+    doc       = 'The PDB ID, which can be 4 chars for RCSB or 6 chars for UniProt.'
+    condition = '[A-Za-z0-9]{4}|[A-Za-z0-9]{6}'
+    
+class PDBSource(String):
+    id        = 'pdb_source'
+    name      = 'PDB Source'
+    doc       = '(alphafold2-v3|alphafold2-v4) The PDB fetch source which could be alphafold2-v3 or alphafold2-v4'
+    condition = 'alphafold2-v3|alphafold2-v4'
+    
 class Chain(String):
     id        = 'chain-ids'
     name      = 'PDB Chain IDs'
@@ -41,3 +54,22 @@ class SASAlgorithm(String):
     name      = 'SASA Algorithm'
     doc       = '(ShrakeRupley|LeeRichards) The SASA Algorithm that could be ShrakeRupley or LeeRichards.'
     condition = '(ShrakeRupley|LeeRichards)'
+    
+class Alleles(String):
+    id        = 'alleles'
+    name      = 'The Alleles Marks'
+    doc       = 'The alleles marks seperate by `,`. The avaliable options are from iedb.org.'
+    version   = '0.0.1'
+    
+class MHCIIMethods(String):
+    id        = 'mhcii-methods'
+    name      = 'The IEDB MHC-II Methods'
+    doc       = 'The IEDB MHC-II prediction methods.'
+    condition = '(recommended|ann|consensus|netmhccons|netmhcpan|netmhcstabpan|pickpocket|smm|smmpmbec)',
+    version   = '0.0.1'
+    
+class MHCII(JSONString):
+    id        = 'mhcii'
+    name      = 'IEDB MHCII Predictions'
+    doc       = 'A JSON file for MHCII prediction results.'
+    version   = '0.0.1'

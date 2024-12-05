@@ -12,7 +12,7 @@ def sasa(pdb: PDB['The input PDB file.'],
          resources={}) -> dict[
              SASA['sasa', 'The solvent accessible surface area. The order is the same order as the PDB.']
          ]:
-    """(SASA) Solvent Accessible Surface Area
+    """Solvent Accessible Surface Area
     Calculate the solvent accessible surface area for the given protein. The results will be an array concatenated by the order of sorted(chains).
     """
     sasa_values = _sasa(pdb,
