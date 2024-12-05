@@ -73,3 +73,16 @@ class MHCII(JSONString):
     name      = 'IEDB MHCII Predictions'
     doc       = 'A JSON file for MHCII prediction results.'
     version   = '0.0.1'
+    
+class COREXSampler(String):
+    id        = 'corex-sampler'
+    name      = 'COREX Sampler'
+    doc       = '(exhaustive|montecarlo|adaptive) The COREX micro-states sampler, which could be exhaustive enumerate, Monte Carlo, or Adaptibe Monte Carlo sampler.'
+    condition = '(exhaustive|montecarlo|adaptive)'
+    version   = '0.0.1'
+    
+class COREX(NumArray):
+    id        = 'corex'
+    name      = 'COREX (ln(kf)) Values'
+    doc       = 'COREX Values in Sorted Chain ID Order'
+    version   = '0.0.1'

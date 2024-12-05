@@ -5,3 +5,4 @@ from .mhcii        import mhcii
 from .list_chain   import list_chain
 from .get_seq      import get_sequence
 from .get_pdb      import get_pdb
+from .corex        import corex

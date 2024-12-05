@@ -3,7 +3,7 @@ from easyapi import register, cache
 from .select_chain import select_chain as _select_chain
 
 @register(required_resources={'cpu':1, 'cuda':0})
-@cache(disable=False)
+@cache(disable=True)
 def select_chain(pdb: PDB['The input PDB file.'],
                  chain: Chain['The selected protein chains ID.'] = 'A',
                  resources = {}) -> dict[

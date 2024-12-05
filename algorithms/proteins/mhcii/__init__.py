@@ -1,9 +1,9 @@
 from ..types import Sequence, Alleles, NumberGreateThan1, MHCIIMethods, MHCII
 from easyapi import register, cache
-from _mhcii import get_mhcii
+from ._mhcii import get_mhcii
 
 @register(required_resources={'cpu':1, 'cuda':0})
-@cache(disable=True)
+@cache(disable=False)
 def mhcii(sequence: Sequence['The sequence for MHCII search.'],
          alleles: Alleles['The alleles for this sequence, seperate by `,`.'] = "HLA-DRB1*03:01",
          mer_size: NumberGreateThan1['The size of each mer of the sequence.'] = 15,

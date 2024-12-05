@@ -8,5 +8,8 @@ def get_sequence(pdb: PDB['The input PDB file.'],
                  resources = {}) -> dict[
                      Sequence['sequence', 'The protein amio acid sequence. The order is the same order as the PDB.']
                  ]:
+    '''Get Protein Sequence
+    Extract the amio acid sequence of the given protein.
+    '''
     _seq = get_seq_(pdb=pdb)
     return dict(sequence=_seq)
