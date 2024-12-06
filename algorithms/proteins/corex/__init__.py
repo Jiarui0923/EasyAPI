@@ -24,5 +24,5 @@ def corex(pdb: PDB['The input PDB file.'],
                          samples=int(samples), sampler=sampler, threshold=threshold,
                          sconf_weight=sconf_weight, base_fraction=base_fraction,
                          probe_radius=probe_radius, point_number=int(n_points),
-                         worker_num=-1, gpu_num=-1)
+                         worker_num=resources.get('cpu', -1), gpu_num=resources.get('cuda', -1))
     return dict(corex=corex_values)

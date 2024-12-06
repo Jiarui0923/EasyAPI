@@ -17,7 +17,7 @@ class AlgorithmCachePool(object):
     
     @classmethod
     def signature(cls, **kwargs):
-        _ordered_kwargs = {key:kwargs[key] for key in sorted(kwargs)}
+        _ordered_kwargs = {key:kwargs[key] for key in sorted(kwargs) if key != 'resources'}
         _json = json.dumps(_ordered_kwargs, indent=None)
         _hash = cls._hash_methods[cls._hash_method](_json.encode('utf-8'))
         return _hash
