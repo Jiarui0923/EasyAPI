@@ -37,7 +37,12 @@ class PDBSource(String):
     name      = 'PDB Source'
     doc       = '(alphafold2-v3|alphafold2-v4) The PDB fetch source which could be alphafold2-v3 or alphafold2-v4'
     condition = 'alphafold2-v3|alphafold2-v4'
-    
+
+class PDBRecord(String):
+    id        = 'pdb-record'
+    name      = 'PDB record'
+    doc       = '(ATOM|HETATM) PDB record names which could be ATOM or HETATM.'
+    condition = '(ATOM|HETATM)'
 class Chain(String):
     id        = 'chain-ids'
     name      = 'PDB Chain IDs'
@@ -65,7 +70,7 @@ class MHCIIMethods(String):
     id        = 'mhcii-methods'
     name      = 'The IEDB MHC-II Methods'
     doc       = 'The IEDB MHC-II prediction methods.'
-    condition = '(recommended|ann|consensus|netmhccons|netmhcpan|netmhcstabpan|pickpocket|smm|smmpmbec)',
+    condition = '(recommended|ann|consensus|netmhccons|netmhcpan|netmhcstabpan|pickpocket|smm|smmpmbec)'
     version   = '0.0.1'
     
 class MHCII(JSONString):
@@ -85,4 +90,55 @@ class COREX(NumArray):
     id        = 'corex'
     name      = 'COREX (ln(kf)) Values'
     doc       = 'COREX Values in Sorted Chain ID Order'
+    version   = '0.0.1'
+    
+class BLASTAlgorithm(String):
+    id        = 'blast-algorithm'
+    name      = 'BLAST Algorithm'
+    doc       = 'The BLAST algorithm which could be `blastp` or `blastx`'
+    condition = '(blastp|blastx)'
+    version   = '0.0.1'
+    
+class BLASTDatabase(String):
+    id        = 'blast-database'
+    name      = 'BLAST Databases'
+    doc       = 'The BLAST database could be `uniref50`.'
+    condition = '(uniref50)'
+    version   = '0.0.1'
+    
+class BLASTMatrix(String):
+    id        = 'blast-matrix'
+    name      = 'BLAST Matrix'
+    doc       = 'Different matrices can affect the sensitivity for detecting homologous sequences.'
+    condition = '(BLOSUM45|BLOSUM50|BLOSUM62|BLOSUM80|BLOSUM90|PAM30|PAM70|PAM250)'
+    version   = '0.0.1'
+    
+class BFactor(NumArray):
+    id        = 'bfactor'
+    name      = 'B-Factor Values'
+    doc       = 'B-Factor values in given PDB file atom orders.'
+    version   = '0.0.1'
+    
+class PeptideLikelihood(NumArray):
+    id        = 'apl-peptide-likelihood'
+    name      = 'Peptide Antigen Processing Likelihood'
+    doc       = 'Peptide Level Antigen Processing Likelihood.'
+    version   = '0.0.1'
+
+class ResidueLikelihood(NumArray):
+    id        = 'apl-residue-likelihood'
+    name      = 'Residue Antigen Processing Likelihood'
+    doc       = 'Residue Level Antigen Processing Likelihood.'
+    version   = '0.0.1'
+
+class APLAggregate(NumArray):
+    id        = 'apl-aggregate'
+    name      = 'Residue Level Aggregated Score'
+    doc       = 'Residue level weight-aggregated COREX, SASA, B-Factor, and Sequence Entropy score.'
+    version   = '0.0.1'
+
+class MHCAPLCombined(JSONString):
+    id        = 'apl-mhc-combined'
+    name      = 'Combined APL-MHC Values'
+    doc       = 'Combined APL-MHC values for each MHC class.'
     version   = '0.0.1'

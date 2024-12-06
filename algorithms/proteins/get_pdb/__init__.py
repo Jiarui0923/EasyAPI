@@ -7,7 +7,7 @@ from easyapi import register, cache
 def get_pdb(pdb_id: PDBID['The PDB ID or UniProt ID.'],
             source: PDBSource['(Ignore for 4 chars PDB ID) The PDB fetch source for UniProt.'] = 'alphafold2-v4',
             resources = {}) -> dict[
-                PDB['pdb': 'The fetched PDB file.']
+                PDB['pdb', 'The fetched PDB file.']
             ]:
     '''Get PDB file
     Get PDB file by PDB ID.

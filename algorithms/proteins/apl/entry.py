@@ -110,7 +110,7 @@ out_params={
                                 desc='Residue Level Aggregated Score.'),
 }
 
-from apl import get_apl
+from algorithms.proteins.apl._apl import get_apl
 def main(entropy, bfactor, corex, sasa,
         mer_size=15, hop=7, flank_size=20, loop_size=21,
         w_entropy=0.3474973544973545,

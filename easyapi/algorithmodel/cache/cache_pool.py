@@ -39,6 +39,7 @@ class AlgorithmCachePool(object):
             _func_id = func.__name__
             @wraps(func)
             def _wrap(**kwargs):
+                _value = None
                 if not disable: _value = cls.fetch(_func_id, **kwargs)
                 if _value is None or disable:
                     _value = func(**kwargs)

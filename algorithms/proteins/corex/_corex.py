@@ -76,7 +76,7 @@ def corex(pdb:str,
                                    device=device, dtype=torch.float64, sampler=sampler, sampler_args=sampler_args,
                                    base_fraction=base_fraction, silence=True, probe_radius=probe_radius,
                                    point_number=point_number, sconf_weight=sconf_weight)
-                    return _corex(_protein)
+                    return _corex(_protein).tolist()
                     break
                except torch.OutOfMemoryError: batch_size = int(batch_size / 2)
                except Exception as e: raise e

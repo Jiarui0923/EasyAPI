@@ -8,7 +8,7 @@ def mhcii(sequence: Sequence['The sequence for MHCII search.'],
          alleles: Alleles['The alleles for this sequence, seperate by `,`.'] = "HLA-DRB1*03:01",
          mer_size: NumberGreateThan1['The size of each mer of the sequence.'] = 15,
          hop: NumberGreateThan1['The size of each mer of the sequence.'] = 7,
-         method: NumberGreateThan1['The method used to compute MHC-II binding.'] = 'recommended',
+         method: MHCIIMethods['The method used to compute MHC-II binding.'] = 'recommended',
          resources={}) -> dict[
              MHCII['mhcii', 'The MHC-II binding outputs from IEDB following JSON formats']
          ]:
