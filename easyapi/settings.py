@@ -5,7 +5,7 @@ from .algorithmodel.cache import AlgorithmCachePool
 from .algorithmodel.cache import Storage
 from .taskmodel.taskqueue import TaskQueue
 
-__import__('algorithms')
+__import__('algorithms.proteins.apl_aggregate')
 
 authenticator = JSONAuthenticator('credentials.json')
 iolib = IOTypeStack(path='iolib.json')

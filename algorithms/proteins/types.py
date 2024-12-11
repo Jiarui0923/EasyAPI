@@ -142,3 +142,9 @@ class MHCAPLCombined(JSONString):
     name      = 'Combined APL-MHC Values'
     doc       = 'Combined APL-MHC values for each MHC class.'
     version   = '0.0.1'
+    
+class APLTable(JSONString):
+    id        = 'apl-table'
+    name      = 'Aggregated APL Table'
+    doc       = 'Combined APL and its components values.'
+    version   = '0.0.1'
