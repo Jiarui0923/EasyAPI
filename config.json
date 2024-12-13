@@ -1,0 +1,26 @@
+{
+    "server_name": "local_test",
+    "task_queue": {
+        "layouts": [
+            {"cpu":1, "cuda":0},
+            {"cpu":1, "cuda":0}
+        ]
+    },
+    "authenticator": {
+        "type": "json",
+        "file": "credentials.json"
+    },
+    "iolib": {
+        "file": "iolib.json"
+    },
+    "cache": {
+        "type": "mongodb",
+        "host": "mongodb://localhost",
+        "database": "easyapi_cache",
+        "hash": "MD5"
+    },
+    "modules": [
+        "algorithms.proteins.apl_aggregate",
+        "algorithms.add_number"
+    ]
+}

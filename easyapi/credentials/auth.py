@@ -9,7 +9,7 @@ import json
 
 class Authenticator(object):
     
-    def __init__(self): self._credentials = {}
+    def __init__(self, credentials={}): self._credentials = credentials
     def __len__(self): return len(self._credentials)
     def __setitem__(self, id, pack): self._credentials[id] = {'key':pack.get('key'), 'access':pack.get('key', default=[])}
     def __getitem__(self, id): return self._credentials[id]
