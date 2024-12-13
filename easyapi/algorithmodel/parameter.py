@@ -11,6 +11,9 @@ class Parameter(object):
         type_id = io_type.get('id')
         if type_id not in iolib: iolib[type_id] = io_type
         self.io_type = iolib[type_id]
+        
+    def __repr__(self):
+        return f'< Parameter {self.name}, Optional={self.optional}, Default={self.default_value} >'
     
     def to_dict(self):
         return dict(
