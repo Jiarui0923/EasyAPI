@@ -38,7 +38,44 @@ def entropy_calc(alignment):
         entropies.append(sumentropy)
     return entropies
 
+
+# ===========================================================
+# Author: Jai Bansal
+# Created Date: 2024-11-01
+# Update: Jai Bansal
+# Updated Date: 2024-11-22
+# Updated Comment: Changed hyperparameters
+# Description: Calculates sequence entropy and extracts B-Factors
+# ===========================================================
 def get_entropy(sequence, alignment):
+    """
+    Run a computation to calculate the solvent-accessible surface area (SASA) for a molecular structure from a PDB file and extracts the bFactors
+
+    Parameters
+    ----------
+        pdb_path: str
+            Path to the PDB file containing the molecular structure to be analyzed.
+
+        algorithm: str, [optional, default: 'Shrake-Rupley']
+            The algorithm to use for calculating the solvent-accessible surface area. Common choices are 'Shrake-Rupley' and 'Lee-Richards'.
+
+        probe_radius: float, [optional, default: 1.4]
+            The radius of the solvent probe, usually representing the size of a water molecule. Default is 1.4 Å.
+
+        n_points: int, [optional, default: 100]
+            Number of points used for sampling the surface. Higher values improve accuracy but increase computational cost.
+
+        n_slices: int, [optional, default: 20]
+            Number of slices used for sampling in cylindrical coordinates. This parameter affects the resolution of the SASA calculation.
+
+        n_threads: int, [optional, default: 1]
+            Number of threads to use for parallel computation. Increasing this value can speed up calculations by using multiple cores.
+        
+    Returns
+    -------
+     PDBfile, calculated entropies, extracted bFactors, asa results
+        
+    """
     with tempfile.NamedTemporaryFile(delete=True) as in_file:
         with tempfile.NamedTemporaryFile(delete=True) as out_file:
             with tempfile.NamedTemporaryFile(delete=True) as query_file:
