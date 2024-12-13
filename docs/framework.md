@@ -1,5 +1,5 @@
-<img src="../images/tulane_long.png" width="128px">
-<img src="../images/icon_long.png" width="128px"> 
+<img src="/images/tulane_long.png" width="128px">
+<img src="/images/icon_long.png" width="128px"> 
 
 # EasyAPI Framework Design
 

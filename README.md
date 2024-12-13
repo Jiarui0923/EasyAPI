@@ -51,7 +51,52 @@ All code was developed in Python 3.12.x.
 
 **NOTICE**: To install `fastapi`, please follow: `pip install "fastapi[standard]"`.
 
+## Server Configuration
+More settings and details could be found at [Server Configuration](/docs/config_guide.md).  
+The EasyAPI configuration is a json files including 6 sections including server_name, task_queue, authenticator, iolib, cache, and modules.  
+The server will use `config.json` under the same path where the server is launched. If `config.json` does not exist, it will use internal configurations.  
+To change the configuration file path, please set environment variable `easyapi_config` to the `config.json` absolute path.
+
+This is an example server configuration:
+```json
+{
+    "server_name": "local_test",
+    "task_queue": {
+        "layouts": [
+            {"cpu":1, "cuda":0},
+            {"cpu":1, "cuda":0}
+        ]
+    },
+    "authenticator": {
+        "type": "json",
+        "file": "credentials.json"
+    },
+    "iolib": {
+        "file": "iolib.json"
+    },
+    "cache": {
+        "type": "mongodb",
+        "host": "mongodb://localhost",
+        "database": "easyapi_cache",
+        "hash": "MD5"
+    },
+    "modules": [
+        "algorithms.add_number"
+    ]
+}
+```
+
+
 ## Start Server
-```python
+To run the server (on port 8000), please run:
+```bash
 fastapi run easyapi
+```
+To change the server port:
+```bash
+fastapi run easyapi --port 8001
+```
+To run under developement mode:
+```bash
+fastapi dev easyapi
 ```
