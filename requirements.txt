@@ -1,0 +1,6 @@
+fastapi==0.112.1
+fastapi-cli==0.0.5
+pandas==2.2.2
+numpy==1.26.4
+# PyMongo is optional for MongoDB based cache
+# pymongo==4.10.1

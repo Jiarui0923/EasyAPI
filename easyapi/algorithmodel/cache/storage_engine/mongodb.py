@@ -1,9 +1,9 @@
 from .engine import StorageEngine
-from pymongo import MongoClient
 
 class MongoDBStorageEngine(StorageEngine):
     def __init__(self, host='mongodb://localhost', database='easyapi'):
-        self._handle = MongoClient('mongodb://localhost')[database]
+        from pymongo import MongoClient
+        self._handle = MongoClient(host)[database]
     def get(self, key, query):
         _data = list(self._handle[key].find({'signature': query}))
         if len(_data) <= 0: return None

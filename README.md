@@ -20,6 +20,7 @@ If there is any issue, please put up with an issue or contact Jiarui Li (jli78@t
   - [x] Auto Algorithm Inference
   - [x] Batch Load
   - [x] Memoization Cache
+  - [x] External Settings
 - [x] Data Type Standard
   - [x] Data Type Check
   - [x] Data Type Define
@@ -31,20 +32,24 @@ If there is any issue, please put up with an issue or contact Jiarui Li (jli78@t
 - [ ] Advanced Authority
   - [ ] Remote API Key
   - [ ] Resourse Control
+  - [x] Entry Control
 - [ ] Documentation
   - [ ] RESTful Documentation
   - [x] Basic Documentation
-- [x] Example Service
-  - [x] SASA
-  - [x] COREX
-  - [x] BFactor
-  - [x] Chain List & Selection
-  - [x] PDB Fetch
-  - [x] Sequence Entropy
-  - [x] APL
-  - [x] MHC-II
 - [x] Communication Protocol
   - [x] WebSocket
+
+## Requirements
+All code was developed in Python 3.12.x.
+
+|Package|Version|Usage|Website|Require|
+|:------|:-----:|:----|:-----:|:-----:|
+|fastapi <img src="https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png" width="64pt">|`0.112.1`|Basic API Framework|[<img src="/images/icons/link.png" width="20pt">](https://fastapi.tiangolo.com/)|`REQUIRED`|
+|pandas <img src="https://pandas.pydata.org/docs/_static/pandas.svg" width="52pt">|`2.2.2`|Data processing|[<img src="/images/icons/link.png" width="20pt">](https://pandas.pydata.org/)|`REQUIRED`|
+|numpy <img src="https://numpy.org/images/logo.svg" width="16pt">|`1.26.4`|Mathmatical computation|[<img src="/images/icons/link.png" width="20pt">](https://numpy.org/)|`REQUIRED`|
+|pymongo <img src="https://webimages.mongodb.com/_com_assets/cms/kuyjf3vea2hg34taa-horizontal_default_slate_blue.svg?auto=format%252Ccompress" width="64pt">|`4.10.1`|MongoDB Access|[<img src="/images/icons/link.png" width="20pt">](https://www.mongodb.com/zh-cn/docs/languages/python/pymongo-driver/current/)|`OPTIONAL`|
+
+**NOTICE**: To install `fastapi`, please follow: `pip install "fastapi[standard]"`.
 
 ## Start Server
 ```python
