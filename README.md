@@ -32,7 +32,7 @@ If there is any issue, please put up with an issue or contact Jiarui Li (jli78@t
   - [ ] Remote API Key
   - [ ] Resourse Control
 - [ ] Documentation
-  - [ ] Auto RESTful Documentation
+  - [ ] RESTful Documentation
   - [x] Basic Documentation
 - [x] Example Service
   - [x] SASA
