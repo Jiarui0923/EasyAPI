@@ -1,7 +1,7 @@
+import os
 
 from .algorithmodel.algorithm_stack import AlgorithmStack
 
-import os
 
 def load_config(path):
     import json
