@@ -20,7 +20,6 @@
         "hash": "MD5"
     },
     "modules": [
-        "algorithms.proteins.apl_aggregate",
         "algorithms.add_number"
     ]
 }
