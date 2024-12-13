@@ -25,12 +25,12 @@ Dependencies:
 - functools: Provides utilities such as `wraps`.
 """
 
-from .algorithm import Algorithm
-from .algorithm_infer import define_algorithm
-
 import logging
 import time
 from functools import wraps
+from .algorithm import Algorithm
+from .algorithm_infer import define_algorithm
+
 
 class AlgorithmStack:
     """
@@ -64,6 +64,18 @@ class AlgorithmStack:
     _registered_algorithm = []
 
     def __init__(self, *args, paths=None, iolib=None):
+        """
+        Initializes the AlgorithmStack with the given paths and input/output library.
+
+        Parameters:
+        ----------
+        *args : tuple
+            Variable number of arguments representing algorithm paths.
+        paths : list, optional
+            List of paths to algorithm definition files.
+        iolib : dict, optional
+            Input/Output library for validation and processing.
+        """
         if paths is None:
             self.paths = args
         else:
@@ -75,20 +87,78 @@ class AlgorithmStack:
         self.algorithms = {_algorithm.id: _algorithm for _algorithm in _algorithms}
 
     def __len__(self):
+        """
+        Returns the number of algorithms in the stack.
+
+        Returns:
+        -------
+        int
+            The number of algorithms in the stack.
+        """
         return len(self.algorithms)
 
     def __contains__(self, name):
+        """
+        Checks if an algorithm is in the stack by its ID.
+
+        Parameters:
+        ----------
+        name : str
+            The ID of the algorithm to check.
+
+        Returns:
+        -------
+        bool
+            True if the algorithm exists in the stack, False otherwise.
+        """
         return name in self.algorithms
 
     def __getitem__(self, name):
+        """
+        Retrieves an algorithm from the stack by its ID.
+
+        Parameters:
+        ----------
+        name : str
+            The ID of the algorithm to retrieve.
+
+        Returns:
+        -------
+        Algorithm
+            The algorithm instance associated with the given ID.
+        """
         return self.algorithms[name]
 
     def _load_algorithm(self, path):
-        """Loads an algorithm from a file path."""
+        """
+        Loads an algorithm from a file path.
+
+        Parameters:
+        ----------
+        path : str
+            The path to the algorithm definition file.
+
+        Returns:
+        -------
+        Algorithm
+            The loaded algorithm instance.
+        """
         return Algorithm.load(path, iolib=self.iolib)
 
     def _init_algorithm(self, algo_dict):
-        """Initializes an algorithm from its definition."""
+        """
+        Initializes an algorithm from its definition.
+
+        Parameters:
+        ----------
+        algo_dict : dict
+            The dictionary containing the algorithm's metadata.
+
+        Returns:
+        -------
+        Algorithm or None
+            The initialized algorithm instance, or None if loading failed.
+        """
         _load_begin = time.perf_counter()
         try:
             logger = logging.getLogger('uvicorn.info')
@@ -101,12 +171,32 @@ class AlgorithmStack:
 
     @property
     def entries(self):
-        """Returns a list of algorithm IDs in the stack."""
+        """
+        Returns a list of algorithm IDs in the stack.
+
+        Returns:
+        -------
+        list
+            A list of algorithm IDs.
+        """
         return list(self.algorithms.keys())
 
     @staticmethod
     def register(func, version='0.0.1', references=None, required_resources=None):
-        """Registers a function as an algorithm with metadata."""
+        """
+        Registers a function as an algorithm with metadata.
+
+        Parameters:
+        ----------
+        func : function
+            The function to register as an algorithm.
+        version : str, optional
+            The version of the algorithm (default is '0.0.1').
+        references : list, optional
+            List of references for the algorithm (default is None).
+        required_resources : dict, optional
+            Dictionary of required resources for the algorithm (default is {'cpu': -1, 'cuda': -1}).
+        """
         if references is None:
             references = []
         if required_resources is None:
@@ -115,7 +205,20 @@ class AlgorithmStack:
         AlgorithmStack._registered_algorithm.append(algo_dict)
 
     def add(self, func, version='0.0.1', references=None, required_resources=None):
-        """Adds a function as an algorithm to the stack."""
+        """
+        Adds a function as an algorithm to the stack.
+
+        Parameters:
+        ----------
+        func : function
+            The function to add as an algorithm.
+        version : str, optional
+            The version of the algorithm (default is '0.0.1').
+        references : list, optional
+            List of references for the algorithm (default is None).
+        required_resources : dict, optional
+            Dictionary of required resources for the algorithm (default is {'cpu': -1, 'cuda': -1}).
+        """
         if references is None:
             references = []
         if required_resources is None:
@@ -125,8 +228,25 @@ class AlgorithmStack:
         if _algo is not None:
             self.algorithms[_algo.id] = _algo
 
+
 def register(version='0.0.1', references=None, required_resources=None):
-    """Decorator to register a function as an algorithm."""
+    """
+    Decorator to register a function as an algorithm.
+
+    Parameters:
+    ----------
+    version : str, optional
+        The version of the algorithm (default is '0.0.1').
+    references : list, optional
+        List of references for the algorithm (default is None).
+    required_resources : dict, optional
+        Dictionary of required resources for the algorithm (default is {'cpu': -1, 'cuda': -1}).
+
+    Returns:
+    -------
+    function
+        The wrapped function, registered as an algorithm.
+    """
     if references is None:
         references = []
     if required_resources is None:
