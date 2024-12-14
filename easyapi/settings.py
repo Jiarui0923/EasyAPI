@@ -105,7 +105,10 @@ def _build_iotype_stack(_iostack_conf):
         The initialized IO type stack instance.
     """
     from .iotypemodel.iotype_model import IOTypeStack
-    return IOTypeStack(path=_iostack_conf.get('file', 'iolib.json'))
+    _io_path = _iostack_conf.get('file', 'iolib.json')
+    if not os.path.exists(_io_path):
+        with open(_io_path, 'w') as io_f_: io_f_.write('{}')
+    return IOTypeStack(path=_io_path)
 
 
 # Initialize the IO type stack

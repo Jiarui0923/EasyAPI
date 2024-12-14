@@ -1,5 +1,5 @@
 {
-    "server_name": "local_test",
+    "server_name": "local",
     "task_queue": {
         "layouts": [
             {"cpu":1, "cuda":0},
@@ -7,16 +7,19 @@
         ]
     },
     "authenticator": {
-        "type": "json",
-        "file": "credentials.json"
+        "type": "memory",
+        "credentials": {
+            "fuv249u3jjjs": {
+                "key": "adhjdvbqovo200320r",
+                "access": ["*"]
+            }
+        }
     },
     "iolib": {
         "file": "iolib.json"
     },
     "cache": {
-        "type": "mongodb",
-        "host": "mongodb://localhost",
-        "database": "easyapi_cache",
+        "type": "memory",
         "hash": "MD5"
     },
     "modules": [
