@@ -12,19 +12,13 @@ This approach provides a scalable and user-friendly platform for algorithm deplo
 
 If there is any issue, please put up with an issue or contact Jiarui Li (jli78@tulane.edu)
 
+## Installation
+Please use follow command to install and run server. Configuration example could be found at [Server Configuration Section](#server-configuration)
+```bash
+pip install ./easyapi
+```
+
 ## TO-DO
-- [x] Basic Framework
-  - [x] Authentication Module
-  - [x] I/O Control Module
-  - [x] Algorithm Unit
-  - [x] Auto Algorithm Inference
-  - [x] Batch Load
-  - [x] Memoization Cache
-  - [x] External Settings
-- [x] Data Type Standard
-  - [x] Data Type Check
-  - [x] Data Type Define
-  - [x] Parameter Support
 - [ ] Advanced Schedule Queue
   - [x] Allow Cancel
   - [x] Multipe Resource-dependent Queue
@@ -33,11 +27,6 @@ If there is any issue, please put up with an issue or contact Jiarui Li (jli78@t
   - [ ] Remote API Key
   - [ ] Resourse Control
   - [x] Entry Control
-- [x] Documentation
-  - [x] RESTful Documentation
-  - [x] Basic Documentation
-- [x] Communication Protocol
-  - [x] WebSocket
 
 ## Requirements
 All code was developed in Python 3.12.x.
