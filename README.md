@@ -33,8 +33,8 @@ If there is any issue, please put up with an issue or contact Jiarui Li (jli78@t
   - [ ] Remote API Key
   - [ ] Resourse Control
   - [x] Entry Control
-- [ ] Documentation
-  - [ ] RESTful Documentation
+- [x] Documentation
+  - [x] RESTful Documentation
   - [x] Basic Documentation
 - [x] Communication Protocol
   - [x] WebSocket
