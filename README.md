@@ -2,7 +2,7 @@
 <img src="images/icon_long.png" width="128px"> 
 
 # EasyAPI
-`UPDATED: 2024/10/12, JIARUI LI`
+`UPDATED: 2024/12/14, JIARUI LI`
 
 ## Introduction
 This project aims to transform a wide range of algorithms—currently implemented as functions, modules, or command-line tools—into accessible services by deploying them through a universal RESTful API server. By adhering to RESTful API standards, the project facilitates easy integration of these algorithms, enabling users to interact with them in a standardized and efficient manner.
@@ -86,7 +86,6 @@ This is an example server configuration:
 }
 ```
 
-
 ## Start Server
 To run the server (on port 8000), please run:
 ```bash
@@ -100,3 +99,31 @@ To run under developement mode:
 ```bash
 fastapi dev easyapi
 ```
+
+## Algorithm Endpoint Defination
+The detailed documentation could be find at [endpoint defination](/docs/algorithm.md).
+This is an example for define an endpoint for sum of two numbers:
+```python
+from easyapi import register, cache, Types
+
+@register(required_resources={'cpu':1, 'cuda':0})
+@cache(disable=False)
+def add_two_number(a:Types.Number['The first number'],
+                   b:Types.Number['The second number'] = 10,
+                   resources={}
+                   ) -> dict[
+                       Types.Number['sum', 'The sum of the two numbers']
+                   ]:
+    """Add Two Numbers
+    Add two float number together and return the result.
+    """
+    cpu_num = resources.get('cpu')
+    cuda_num = resources.get('cuda')
+    return dict(sum=a+b)
+```
+
+### OpenAPI Documentation
+The OpenAPI documentation could be accessed at `/docs` and JSON format could be downloaded from `/openapi.json`.
+
+- [openapi.json](/docs/openapi.json)
+- [openapi.md](/docs/openapi.md)

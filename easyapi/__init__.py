@@ -18,6 +18,8 @@ This module does not define any new functions but imports necessary components
 to initialize and configure the application.
 """
 
+__version__ = '1.0.0'
+
 from . import annotations as Types
 from .algorithmodel.algorithm_stack import register
 from .algorithmodel.cache import cache

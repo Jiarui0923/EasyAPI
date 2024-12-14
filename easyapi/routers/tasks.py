@@ -39,7 +39,7 @@ from ..settings import authenticator
 from ..settings import taskqueue
 
 # Initialize FastAPI router with the 'tasks' prefix
-route = APIRouter(prefix='/tasks')
+route = APIRouter(prefix='/tasks', tags=['Task Management'])
 
 def build_task_response(task_id, task):
     """

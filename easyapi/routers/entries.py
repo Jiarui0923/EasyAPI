@@ -32,7 +32,7 @@ from ..taskmodel.task import Task
 from ..taskmodel.taskholder import task_holder
 
 # Initialize FastAPI router with the 'entries' prefix
-route = APIRouter(prefix='/entries')
+route = APIRouter(prefix='/entries', tags=['Algorithm Entries'])
 
 @route.get('/')
 async def get_entry_list(skip: int = 0, limit: int = 10, name: bool = False,

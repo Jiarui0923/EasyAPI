@@ -26,7 +26,7 @@ from ..settings import authenticator
 from ..settings import iolib
 
 # Initialize FastAPI router with the 'io' prefix
-route = APIRouter(prefix='/io')
+route = APIRouter(prefix='/io', tags=['I/O Types'])
 
 @route.get('/')
 async def get_type_list(skip: int = 0, limit: int = 10, full: bool = False,
