@@ -87,6 +87,8 @@ This is an example server configuration:
 ```
 
 ## Start Server
+### Test Server
+Should be run with developing EasyAPI under the same path.  
 To run the server (on port 8000), please run:
 ```bash
 fastapi run easyapi
@@ -98,6 +100,11 @@ fastapi run easyapi --port 8001
 To run under developement mode:
 ```bash
 fastapi dev easyapi
+```
+### Run installed server
+Should be run with pip installed EasyAPI.  
+```bash
+uvicorn easyapi:app --host localhost --port 8000
 ```
 
 ## Algorithm Endpoint Defination

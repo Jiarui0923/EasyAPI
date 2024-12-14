@@ -7,3 +7,6 @@ example.pdb
 *.fasta
 tutorial.ipynb
 tutorial_schedule.ipynb
+test
+build
+*.egg-info
