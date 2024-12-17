@@ -170,6 +170,10 @@ def _config_cache(_cache_config):
         AlgorithmCachePool.engine(Storage.MongoDB(host=_cache_config.get('host', 'mongodb://localhost'),
                                                   database=_cache_config.get('database', 'easyapi_cache')),
                                   hash=_cache_config.get('hash', 'MD5'))
+    elif _type == 'mongita':
+        AlgorithmCachePool.engine(Storage.Mongita(path=_cache_config.get('path', './.mongita'),
+                                                  database=_cache_config.get('database', 'easyapi_cache')),
+                                  hash=_cache_config.get('hash', 'MD5'))    
     elif _type == 'memory':
         AlgorithmCachePool.engine(Storage.Memory(),
                                   hash=_cache_config.get('hash', 'MD5'))

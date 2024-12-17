@@ -101,6 +101,11 @@ There are two cache backend provided `mongodb` and `memory`
    - `"host"` = `"mongodb://localhost"` The mongodb host
    - `"database"` = `"easyapi_cache"` Databased used for cache.
    - `"hash"` = `"MD5"` The method used to create parameter signature. Could be `MD5`, `SHA1`, `SHA256`, and `SHA512`.
+3. mongita: Cache will be maintained by mongita, which is a file based MongoDB-like NoSQL database.
+   - `"type"` = `"mongita"`
+   - `"path"` = `./.mongita` The oath to mongita storage path.
+   - `"database"` = `"easyapi_cache"` Databased used for cache.
+   - `"hash"` = `"MD5"` The method used to create parameter signature. Could be `MD5`, `SHA1`, `SHA256`, and `SHA512`.  
   
 ### Algorithm Modules
 - Key: `"modules"`
