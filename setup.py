@@ -9,7 +9,7 @@ This approach provides a scalable and user-friendly platform for algorithm deplo
 
 If there is any issue, please put up with an issue or contact Jiarui Li (jli78@tulane.edu)
 '''
-VERSION = '1.0.0'
+VERSION = '1.0.1'
 NAME = 'EasyAPI'
 
 setup(
@@ -21,14 +21,14 @@ setup(
     author='Jiarui Li, Marco K. Carbullido, Jai Bansal, Samuel J. Landry, Ramgopal R. Mettu',
     author_email=('jli78@tulane.edu'),
     url='https://git.tulane.edu/apl/easyapi',
-    license='MIT',
+    license='GPLv3',
     install_requires=[
         'fastapi', 'fastapi-cli', 'pandas', 'numpy'
     ],
     classifiers=[
         'Intended Audience :: Developers',
         'Intended Audience :: Science/Research',
-        # 'License :: OSI Approved :: Apache 2.0 License',
+        'License :: OSI Approved :: GPLv3 License',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.12',
         'Topic :: Software Development :: Libraries :: Python Modules'
