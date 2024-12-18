@@ -1,0 +1,8 @@
+{
+    "enable": true,
+    "host": "http://localhost:8000/stat/",
+    "timeout": 1,
+    "record_host": true,
+    "record_parameter": true,
+    "record_signature": true
+}

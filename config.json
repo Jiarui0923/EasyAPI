@@ -24,5 +24,6 @@
     },
     "modules": [
         "algorithms.add_number"
-    ]
+    ],
+    "analystics": "./janalytics.json"
 }

@@ -26,6 +26,7 @@ Dependencies:
 import os
 import json
 from .algorithmodel.algorithm_stack import AlgorithmStack
+from .janalytics import JAnalytics
 
 
 def load_config(path):
@@ -183,3 +184,8 @@ def _config_cache(_cache_config):
 
 # Configure the cache system
 _config_cache(_conf.get('cache', {}))
+
+if _conf.get('analystics') is not None:
+    JAnalytics.load_config(_conf.get('analystics'))
+else:
+    JAnalytics.config(enable=False)

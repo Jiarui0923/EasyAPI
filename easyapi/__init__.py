@@ -23,4 +23,5 @@ __version__ = '1.0.0'
 from . import annotations as Types
 from .algorithmodel.algorithm_stack import register
 from .algorithmodel.cache import cache
+from .janalytics import stat
 from .main import app
