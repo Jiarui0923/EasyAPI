@@ -1,13 +1,8 @@
 __pycache__
-test.ipynb
 credentials.json
 iolib.json
-example.pdb
 *.zip
 *.fasta
-tutorial.ipynb
-tutorial_schedule.ipynb
-test
 build
 *.egg-info
 *.jpip.md

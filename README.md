@@ -1,8 +1,7 @@
-<img src="images/tulane_long.png" width="128px">
-<img src="images/icon_long.png" width="128px"> 
+<img src="images/tulane_long.png" width="128px"><img src="images/icon_long.png" width="128px"> 
 
 # EasyAPI
-`UPDATED: 2024/12/14, JIARUI LI`
+`UPDATED: 2025/03/10`
 
 ## Introduction
 This project aims to transform a wide range of algorithms—currently implemented as functions, modules, or command-line tools—into accessible services by deploying them through a universal RESTful API server. By adhering to RESTful API standards, the project facilitates easy integration of these algorithms, enabling users to interact with them in a standardized and efficient manner.
@@ -17,16 +16,6 @@ Please use follow command to install and run server. Configuration example could
 ```bash
 pip install ./easyapi
 ```
-
-## TO-DO
-- [ ] Advanced Schedule Queue
-  - [x] Allow Cancel
-  - [x] Multipe Resource-dependent Queue
-  - [ ] Dynamic Queue Layout
-- [ ] Advanced Authority
-  - [ ] Remote API Key
-  - [ ] Resourse Control
-  - [x] Entry Control
 
 ## Requirements
 All code was developed in Python 3.12.x.
