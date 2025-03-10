@@ -21,7 +21,10 @@ setup(
     url='https://github.com/Jiarui0923/EasyAPI',
     license='GPLv3',
     install_requires=[
-        'fastapi', 'fastapi-cli', 'pandas', 'numpy'
+        'fastapi',
+        'fastapi-cli',
+        'pandas',
+        'numpy'
     ],
     classifiers=[
         'Intended Audience :: Developers',
