@@ -1,5 +1,4 @@
-<img src="/images/tulane_long.png" width="128px">
-<img src="/images/icon_long.png" width="128px"> 
+<img src="/images/tulane_long.png" width="128px"><img src="/images/icon_apl.png" width="256px"><img src="/images/icon_long.png" width="128px"> 
 
 # EasyAPI Algorithm Build Documentation
 `Update: 2024-12-13`

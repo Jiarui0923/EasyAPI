@@ -1,7 +1,9 @@
-<img src="images/tulane_long.png" width="128px"><img src="images/icon_long.png" width="128px"> 
+<img src="/images/tulane_long.png" width="128px"><img src="/images/icon_apl.png" width="256px"><img src="/images/icon_long.png" width="128px">
 
 # EasyAPI
 `UPDATED: 2025/03/10`
+
+This is part of the Antigen Processing Likelihood (APL) Suite project.
 
 ## Introduction
 This project aims to transform a wide range of algorithms—currently implemented as functions, modules, or command-line tools—into accessible services by deploying them through a universal RESTful API server. By adhering to RESTful API standards, the project facilitates easy integration of these algorithms, enabling users to interact with them in a standardized and efficient manner.
